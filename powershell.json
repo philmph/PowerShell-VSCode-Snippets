@@ -1,0 +1,233 @@
+{
+	"PM Function": {
+		"prefix": "[PM] Function",
+		"body": [
+			"function ${1:Verb-Noun}",
+			"{",
+				"\t[CmdletBinding(DefaultParameterSetName='${2:String}',",
+				"\t\t\t\t   HelpURI='URI',",
+				"\t\t\t\t   ConfirmImpact='String',",
+				"\t\t\t\t   SupportsPaging=Boolean,",
+				"\t\t\t\t   SupportsShouldProcess=Boolean,",
+				"\t\t\t\t   PositionalBinding=Boolean)]",
+				"\t",
+				"\tparam (",
+				"\t\t$0",
+				"\t)",
+				"\t",
+				"\tbegin {",
+				"\t\tSet-StrictMode -Version 2",
+				"\t}",
+				"\t",
+				"\tprocess {",
+				"\t\t",
+				"\t}",
+				"\t",
+				"\tend {",
+				"\t\t",
+				"\t}",
+			"} # function"
+		],
+		"description": "Function Block"
+	},
+		
+	"PM Parameter": {
+		"prefix": "[PM] Parameter ",
+		"body": [
+			"[Parameter(Mandatory=$${1:Boolean},",
+			"\t\t   Position=${2:Int},",
+			"\t\t   ValueFromPipeline=$${3:Boolean},",
+			"\t\t   ValueFromPipelineByPropertyName=$${4:Boolean},",
+			"\t\t   ValueFromRemainingArguments=Boolean,",
+			"\t\t   ParameterSetName='${5:String}')]",
+			"[Alias('String')]",
+			"[ValidateNotNull()]",
+			"[ValidateNotNullOrEmpty()]",
+			"[ValidateSet('String1', 'String2')]",
+			"[ValidateCount(Int_min, Int_max)]",
+			"[ValidateLength(Int_min, Int_max)]",
+			"[ValidateRange(Int_min, Int_max)]",
+			"[ValidatePattern('RegexPattern')]",
+			"[ValidateScript({Expression})]",
+			"[AllowNull()]",
+			"[AllowEmptyString()]",
+			"[AllowEmptyCollection()]",
+			"[${6:Type[]}]$${7:Name}$0"
+		],
+		"description": "Parameter Block"
+	},
+
+	"PM Synopsis": {
+		"prefix": "[PM] Synopsis",
+		"body": [
+			"<#",
+			".SYNOPSIS",
+			"Short description",
+			"",
+		 	".DESCRIPTION",
+			"Long description",
+			"",
+			".PARAMETER ParameterName",
+			"Short description of a Parameter",
+			"",
+			".PARAMETER ParameterName",
+			"Another short description of a Parameter",
+			"",
+			".EXAMPLE",
+			"Example of how to use this cmdlet",
+			"",
+			".EXAMPLE",
+			"Another example of how to use this cmdlet",
+			"",
+			".INPUTS",
+			"Inputs to this cmdlet (if any)",
+			"",
+			".OUTPUTS",
+			"Output from this cmdlet (if any)",
+			"",
+			".NOTES",
+			"Author: Philipp Maier",
+			"Github: https://github.com/philmph",
+			"Company: $1",
+			"",
+			"Creationdate: $2",
+			"#>",
+			"",
+			"$0"
+		],
+		"description": "Synopsis Block"
+	},
+
+	"PM Empty Synopsis": {
+		"prefix": "[PM] Empty Synopsis",
+		"body": [
+			"<#",
+			".SYNOPSIS",
+			"Short description",
+			"",
+		 	".DESCRIPTION",
+			"Long description",
+			"",
+			".PARAMETER ParameterName",
+			"Short description of a Parameter",
+			"",
+			".PARAMETER ParameterName",
+			"Another short description of a Parameter",
+			"",
+			".EXAMPLE",
+			"Example of how to use this cmdlet",
+			"",
+			".EXAMPLE",
+			"Another example of how to use this cmdlet",
+			"",
+			".INPUTS",
+			"Inputs to this cmdlet (if any)",
+			"",
+			".OUTPUTS",
+			"Output from this cmdlet (if any)",
+			"",
+			".NOTES",
+			"Author: $1",
+			"Github: $2",
+			"Company: $3",
+			"",
+			"Creationdate: $4",
+			"#>",
+			"",
+			"$0"
+		],
+		"description": "Empty Synopsis Block"
+	},
+
+	"PM Synopsis File": {
+		"prefix": "[PM] Synopsis File",
+		"body": [
+			"#Requires -Version $1",
+			"#Requires -RunAsAdministrator",
+			"",
+			"<#",
+			"################################################################################",
+			"Author:\t\t\t\tPhilipp Maier",
+			"Author Github:\t\thttps://github.com/philmph",
+			"Company:\t\t\t$2",
+			"",
+			"Filename:\t\t\t$3",
+			"Creationdate:\t\t$4",
+			"",
+			"Notes & Usage:",
+			"$0",
+			"################################################################################",
+			"#>",
+			""
+		],
+		"description": "Synopsis File Block"
+	},
+
+	"PM Empty Synopsis File": {
+		"prefix": "[PM] Empty Synopsis File",
+		"body": [
+			"#Requires -Version $1",
+			"#Requires -RunAsAdministrator",
+			"",
+			"<#",
+			"################################################################################",
+			"Author:\t\t\t\t$2",
+			"Author Github:\t\t$3",
+			"Company:\t\t\t$4",
+			"",
+			"Filename:\t\t\t$5",
+			"Creationdate:\t\t$6",
+			"",
+			"Notes & Usage:",
+			"$0",
+			"################################################################################",
+			"#>",
+			""
+		],
+		"description": "Empty Synopsis File Block"
+	},
+
+	"PM foreach": {
+		"prefix": "[PM] foreach",
+		"body": [
+			"foreach ($1 in $2) {",
+				"\t$0",
+			"} # foreach",
+			""
+		],
+		"description": "foreach Block"
+	},
+
+	"PM for": {
+		"prefix": "[PM] for",
+		"body": [
+			"for ($$i = $1; $$i -lt $2; $$i++) {",
+			"\t$0",
+			"} # for",
+			""
+		],
+		"description": "for Block"
+	},
+
+	"PM while": {
+		"prefix": "[PM] while",
+		"body": [
+			"while ($1) {",
+			"\t$0",
+			"} # while",
+			""
+		],
+		"description": "while Block"
+	},
+
+	"PM PSCustomObject": {
+		"prefix": "[PM] PSCustomObject",
+		"body": [
+			"[PSCustomObject] @{",
+			"\t$0",
+			"} # PSCustomObject",
+			""
+		],
+		"description": "PSCustomObject Block"
+	}
+}
