@@ -194,7 +194,7 @@
 		"prefix": "[PM] foreach",
 		"body": [
 			"foreach ($1 in $2) {",
-				"\t$0",
+			"\t$0",
 			"} # foreach",
 			""
 		],
@@ -232,5 +232,52 @@
 			""
 		],
 		"description": "PSCustomObject Block"
+	},
+
+	"PM Class": {
+		"prefix": "[PM] Class",
+		"body": [
+			"class ${1:ClassName}",
+			"{",
+			"\t[${2:Type[]}]$${3:Name}",
+			"",
+			"\t# Default empty constructor",
+			"\t${1:ClassName} () {}",
+			"",
+			"\t# Constructor with overloads",
+			"\t${1:ClassName} ([${2:Type[]}]$${3:Name}) {",
+			"\t\t$$this.${3:Name} = $${3:Name}",
+			"\t}",
+			"",
+			"\t# Example method void",
+			"\t[void] ConvertNameToUpper () {",
+			"\t\t$$this.${3:Name} = ($$this.${3:Name}).ToUpper()",
+			"\t}",
+			"",
+			"\t# Example method with return",
+			"\t[string] NameToUpper () {",
+			"\t\treturn ($$this.${3:Name}).ToUpper()",
+			"\t}",
+			"}",
+			"",
+			"$0"
+		],
+		"description": "Class Block"
+	},
+
+	"PM List": {
+		"prefix": "[PM] List",
+		"body": [
+			"$${1:Name} = [System.Collections.Generic.List[${2:Type}]]::new()$0"
+		],
+		"description": "System.Collections.Generic.List"
+	},
+
+	"PM ArrayList": {
+		"prefix": "[PM] ArrayList",
+		"body": [
+			"$${1:Name} = [System.Collections.ArrayList]::new()$0"
+		],
+		"description": "System.Collections.ArrayList"
 	}
 }
