@@ -228,7 +228,7 @@
 		"body": [
 			"[PSCustomObject] @{",
 			"\t$0",
-			"} # PSCustomObject",
+			"}",
 			""
 		],
 		"description": "PSCustomObject Block"
@@ -279,5 +279,18 @@
 			"$${1:Name} = [System.Collections.ArrayList]::new()$0"
 		],
 		"description": "System.Collections.ArrayList"
+	},
+
+	"PM try catch": {
+		"prefix": "[PM] try catch",
+		"body": [
+			"try {",
+			"\t{0}",
+			"} catch {",
+			"\t",
+			"}",
+			""
+		],
+		"description": "try catch Block"
 	}
 }
