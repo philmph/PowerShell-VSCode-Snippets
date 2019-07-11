@@ -2,8 +2,7 @@
 	"PM Function": {
 		"prefix": "[PM] Function",
 		"body": [
-			"function ${1:Verb}-${2:Noun}",
-			"{",
+			"function ${1:Verb}-${2:Noun} {",
 				"\t[CmdletBinding(DefaultParameterSetName='${3:String}'${4:,",
 				"\t\t\t\t   HelpURI='URI',",
 				"\t\t\t\t   ConfirmImpact='String',",
@@ -13,19 +12,19 @@
 				"\t",
 				"\tparam (",
 				"\t\t$0",
-				"\t)",
+				"\t) # param",
 				"\t",
 				"\tbegin {",
 				"\t\tSet-StrictMode -Version 2",
-				"\t}",
+				"\t} # begin",
 				"\t",
 				"\tprocess {",
 				"\t\t",
-				"\t}",
+				"\t} # process",
 				"\t",
 				"\tend {",
 				"\t\t",
-				"\t}",
+				"\t} # end",
 			"} # function"
 		],
 		"description": "Function Block"
@@ -47,7 +46,7 @@
 			"[ValidateLength(Int_min, Int_max)]",
 			"[ValidateRange(Int_min, Int_max)]",
 			"[ValidatePattern('RegexPattern')]",
-			"[ValidateScript({Expression)]",
+			"[ValidateScript({Expression})]",
 			"[AllowNull()]",
 			"[AllowEmptyString()]",
 			"[AllowEmptyCollection()]",
@@ -90,6 +89,7 @@
 			"Repository:\t\t$1",
 			"",
 			"Creationdate:\t$2",
+			"Version:\t\t1.0",
 			"#>",
 			"",
 			"$0"
@@ -132,6 +132,7 @@
 			"Company:\t\t$4",
 			"",
 			"Creationdate:\t$5",
+			"Version:\t\t1.0",
 			"#>",
 			"",
 			"$0"
@@ -153,6 +154,7 @@
 			"",
 			"Filename:\t\t\t$4",
 			"Creationdate:\t\t$5",
+			"Version:\t\t\t1.0",
 			"",
 			"Notes & Usage:",
 			"$6",
@@ -179,6 +181,7 @@
 			"",
 			"Filename:\t\t\t$7",
 			"Creationdate:\t\t$8",
+			"Version:\t\t\t1.0",
 			"",
 			"Notes & Usage:",
 			"$9",
@@ -288,7 +291,7 @@
 			"\t$0",
 			"} catch {",
 			"\t",
-			"}",
+			"} # try/catch",
 			""
 		],
 		"description": "try catch Block"
