@@ -4,7 +4,7 @@
 		"body": [
 			"function ${1:Verb}-${2:Noun}",
 			"{",
-				"\t[CmdletBinding(${3:SupportsShouldProcess=\\$true})]",
+				"\t[CmdletBinding(${3:SupportsShouldProcess})]",
 				"\t",
 				"\tparam (",
 				"\t\t$0",
@@ -36,12 +36,12 @@
 	"PM Parameter": {
 		"prefix": "[PM] Parameter",
 		"body": [
-			"[Parameter(${1:Mandatory=\\$true,",
-			"\t\t   }${2:ValueFromPipeline=\\$true,",
-			"\t\t   }${3:ValueFromPipelineByPropertyName=\\$true,",
+			"[Parameter(${1:Mandatory,",
+			"\t\t   }${2:ValueFromPipeline,",
+			"\t\t   }${3:ValueFromPipelineByPropertyName,",
 			"\t\t   }${4:Position=Int,",
 			"\t\t   ParameterSetName='String'})]",
-			"${5:[Alias('String')]",
+			"${5:[Alias('String1', 'String2')]",
 			"[ValidateNotNull()]",
 			"[ValidateNotNullOrEmpty()]",
 			"[ValidateSet('String1', 'String2')]",
@@ -92,7 +92,7 @@
 			"Repository:\t\t$2",
 			"",
 			"Creationdate:\t$3",
-			"Version:\t\t1.0",
+			"Version:\t\t0.1",
 			"#>",
 			"",
 			"$0"
@@ -135,7 +135,7 @@
 			"Company:\t\t$4",
 			"",
 			"Creationdate:\t$5",
-			"Version:\t\t1.0",
+			"Version:\t\t0.1",
 			"#>",
 			"",
 			"$0"
@@ -150,18 +150,18 @@
 			"#Requires -RunAsAdministrator",
 			"",
 			"}<#",
-			"################################################################################",
+			"############################################################",
 			"Author:\t\t\t\tPhilipp Maier",
 			"Author Git:\t\t\thttps://github.com/philmph",
 			"Repository:\t\t\t$2",
 			"",
 			"Filename:\t\t\t$3",
 			"Creationdate:\t\t$4",
-			"Version:\t\t\t1.0",
+			"Version:\t\t\t0.1",
 			"",
 			"Notes & Usage:",
 			"$5",
-			"################################################################################",
+			"############################################################",
 			"#>",
 			"",
 			"$0"
@@ -176,7 +176,7 @@
 			"#Requires -RunAsAdministrator",
 			"",
 			"}<#",
-			"################################################################################",
+			"############################################################",
 			"Author:\t\t\t\t$2",
 			"Author Git:\t\t\t$3",
 			"Repository:\t\t\t$4",
@@ -184,11 +184,11 @@
 			"",
 			"Filename:\t\t\t$6",
 			"Creationdate:\t\t$7",
-			"Version:\t\t\t1.0",
+			"Version:\t\t\t0.1",
 			"",
 			"Notes & Usage:",
 			"$8",
-			"################################################################################",
+			"############################################################",
 			"#>",
 			"",
 			"$0"
@@ -204,6 +204,16 @@
 			"$0"
 		],
 		"description": "RunAsAdministrator for File"
+	},
+
+	"PM Requires Version": {
+		"prefix": "[PM] Requires Version",
+		"body": [
+			"#Requires -Version $1",
+			"",
+			"$0"
+		],
+		"description": "Version for File"
 	},
 
 	"PM foreach": {
@@ -290,31 +300,32 @@
 		"description": "List"
 	},
 
-	"PM ArrayList": {
-		"prefix": "[PM] ArrayList",
+	"PM ArrayList (deprecated)": {
+		"prefix": "[PM] ArrayList (deprecated)",
 		"body": [
+			"# Deprecated: Use Generic List",
 			"\\$${1:Name} = [System.Collections.ArrayList]::new()",
 			"$0"
 		],
-		"description": "ArrayList"
+		"description": "ArrayList (deprecated)"
 	},
 
 	"PM List (pwsh 3.0)": {
-		"prefix": "[PM] List",
+		"prefix": "[PM] List (pwsh 3.0)",
 		"body": [
 			"\\$${1:Name} = New-Object -TypeName System.Collections.Generic.List[${2:Type}]",
 			"$0"
 		],
-		"description": "List"
+		"description": "List (pwsh 3.0)"
 	},
 
-	"PM ArrayList (pwsh 3.0)": {
-		"prefix": "[PM] ArrayList",
+	"PM ArrayList (pwsh 3.0; deprecated)": {
+		"prefix": "[PM] ArrayList (pwsh 3.0; deprecated)",
 		"body": [
 			"\\$${1:Name} = New-Object -TypeName 'System.Collections.ArrayList'",
 			"$0"
 		],
-		"description": "ArrayList"
+		"description": "ArrayList (pwsh 3.0; deprecated)"
 	},
 
 	"PM try catch": {
@@ -322,7 +333,8 @@
 		"body": [
 			"try {",
 			"\t$0",
-			"} catch {",
+			"}",
+			"catch {",
 			"\t",
 			"}",
 			""
