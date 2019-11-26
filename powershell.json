@@ -92,7 +92,6 @@
 			"Repository:\t\t$2",
 			"",
 			"Creationdate:\t$3",
-			"Version:\t\t0.1",
 			"#>",
 			"",
 			"$0"
@@ -135,7 +134,6 @@
 			"Company:\t\t$4",
 			"",
 			"Creationdate:\t$5",
-			"Version:\t\t0.1",
 			"#>",
 			"",
 			"$0"
@@ -157,7 +155,6 @@
 			"",
 			"Filename:\t\t\t$3",
 			"Creationdate:\t\t$4",
-			"Version:\t\t\t0.1",
 			"",
 			"Notes & Usage:",
 			"$5",
@@ -184,7 +181,6 @@
 			"",
 			"Filename:\t\t\t$6",
 			"Creationdate:\t\t$7",
-			"Version:\t\t\t0.1",
 			"",
 			"Notes & Usage:",
 			"$8",
