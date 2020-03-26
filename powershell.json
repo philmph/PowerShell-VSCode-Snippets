@@ -24,8 +24,8 @@
 		"description": "Function Block"
 	},
 
-	"PM Short Parameter": {
-		"prefix": "[PM] Parameter",
+	"PM Parameter Short": {
+		"prefix": "[PM] Parameter Short",
 		"body": [
 			"[Parameter()]",
 			"[${1:Type[]}]\\$${2:Name}$0"
@@ -36,12 +36,12 @@
 	"PM Parameter": {
 		"prefix": "[PM] Parameter",
 		"body": [
-			"[Parameter(${1:Mandatory,",
-			"\t\t   }${2:ValueFromPipeline,",
-			"\t\t   }${3:ValueFromPipelineByPropertyName,",
-			"\t\t   }${4:Position=Int,",
-			"\t\t   ParameterSetName='String'})]",
-			"${5:[Alias('String1', 'String2')]",
+			"[Parameter(${7:Mandatory}${6:,",
+			"\t\t   Position=${1:Int}}${5:,",
+			"\t\t   ValueFromPipeline}${4:,",
+			"\t\t   ValueFromPipelineByPropertyName}${3:,",
+			"\t\t   ParameterSetName='${2:String}'})]",
+			"${8:[Alias('String1', 'String2')]",
 			"[ValidateNotNull()]",
 			"[ValidateNotNullOrEmpty()]",
 			"[ValidateSet('String1', 'String2')]",
@@ -49,11 +49,11 @@
 			"[ValidateLength(Int_min, Int_max)]",
 			"[ValidateRange(Int_min, Int_max)]",
 			"[ValidatePattern('RegexPattern')]",
-			"[ValidateScript(\\{Expression\\})]",
+			"[ValidateScript({Expression\\})]",
 			"[AllowNull()]",
 			"[AllowEmptyString()]",
 			"[AllowEmptyCollection()]",
-			"}[${6:Type[]}]\\$${7:Name}$0"
+			"}[${9:Type[]}]\\$${10:Name}$0"
 		],
 		"description": "Parameter Block"
 	},
@@ -65,7 +65,7 @@
 			".SYNOPSIS",
 			"Short description",
 			"",
-		 	".DESCRIPTION",
+			".DESCRIPTION",
 			"Long description",
 			"",
 			".PARAMETER ParameterName",
@@ -88,10 +88,10 @@
 			"",
 			".NOTES",
 			"Author:\t\t\tPhilipp Maier",
-			"Author Git:\t\t${1:https://github.com/philmph}",
-			"Repository:\t\t$2",
+			"Author Git:\t\thttps://github.com/philmph",
+			"Repository:\t\t$1",
 			"",
-			"Creationdate:\t$3",
+			"Creationdate:\t$2",
 			"#>",
 			"",
 			"$0"
@@ -106,7 +106,7 @@
 			".SYNOPSIS",
 			"Short description",
 			"",
-		 	".DESCRIPTION",
+			".DESCRIPTION",
 			"Long description",
 			"",
 			".PARAMETER ParameterName",
@@ -195,9 +195,7 @@
 	"PM Requires RunAsAdministrator": {
 		"prefix": "[PM] Requires RunAsAdministrator",
 		"body": [
-			"#Requires -RunAsAdministrator",
-			"",
-			"$0"
+			"#Requires -RunAsAdministrator"
 		],
 		"description": "RunAsAdministrator for File"
 	},
@@ -205,9 +203,7 @@
 	"PM Requires Version": {
 		"prefix": "[PM] Requires Version",
 		"body": [
-			"#Requires -Version $1",
-			"",
-			"$0"
+			"#Requires -Version $1"
 		],
 		"description": "Version for File"
 	},
@@ -249,9 +245,9 @@
 		"prefix": "[PM] PSCustomObject",
 		"body": [
 			"[PSCustomObject] @{",
-			"\t$1 = $0",
+			"\t$1 = $2$0",
 			"}",
-			""
+			"",
 		],
 		"description": "PSCustomObject Block"
 	},
@@ -296,6 +292,15 @@
 		"description": "List"
 	},
 
+	"PM List (pwsh 3.0)": {
+		"prefix": "[PM] List (pwsh 3.0)",
+		"body": [
+			"\\$${1:Name} = New-Object -TypeName System.Collections.Generic.List[${2:Type}]",
+			"$0"
+		],
+		"description": "List (pwsh 3.0)"
+	},
+
 	"PM ArrayList (deprecated)": {
 		"prefix": "[PM] ArrayList (deprecated)",
 		"body": [
@@ -306,18 +311,10 @@
 		"description": "ArrayList (deprecated)"
 	},
 
-	"PM List (pwsh 3.0)": {
-		"prefix": "[PM] List (pwsh 3.0)",
-		"body": [
-			"\\$${1:Name} = New-Object -TypeName System.Collections.Generic.List[${2:Type}]",
-			"$0"
-		],
-		"description": "List (pwsh 3.0)"
-	},
-
 	"PM ArrayList (pwsh 3.0; deprecated)": {
 		"prefix": "[PM] ArrayList (pwsh 3.0; deprecated)",
 		"body": [
+			"# Deprecated: Use Generic List",
 			"\\$${1:Name} = New-Object -TypeName 'System.Collections.ArrayList'",
 			"$0"
 		],
