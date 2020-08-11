@@ -2,8 +2,7 @@
 	"PM Function": {
 		"prefix": "[PM] Function",
 		"body": [
-			"function ${1:Verb}-${2:Noun}",
-			"{",
+			"function ${1:Verb}-${2:Noun} {",
 				"\t[CmdletBinding(${3:SupportsShouldProcess})]",
 				"\t",
 				"\tparam (",
@@ -22,15 +21,6 @@
 			"}"
 		],
 		"description": "Function Block"
-	},
-
-	"PM Parameter Short": {
-		"prefix": "[PM] Parameter Short",
-		"body": [
-			"[Parameter()]",
-			"[${1:Type[]}]\\$${2:Name}$0"
-		],
-		"description": "Short Parameter Block"
 	},
 
 	"PM Parameter": {
@@ -53,9 +43,18 @@
 			"[AllowNull()]",
 			"[AllowEmptyString()]",
 			"[AllowEmptyCollection()]",
-			"}[${9:Type[]}]\\$${10:Name}$0"
+			"}[${9:Type}${10:[]}]\\$${11:Name}$0"
 		],
 		"description": "Parameter Block"
+	},
+
+	"PM Parameter Short": {
+		"prefix": "[PM] Parameter Short",
+		"body": [
+			"[Parameter()]",
+			"[${1:Type}${2:[]}]\\$${3:Name}$0"
+		],
+		"description": "Short Parameter Block"
 	},
 
 	"PM Synopsis": {
@@ -88,10 +87,10 @@
 			"",
 			".NOTES",
 			"Author:\t\t\tPhilipp Maier",
-			"Author Git:\t\thttps://github.com/philmph",
-			"Repository:\t\t$1",
+			"Author Git:\t\thttps://github.com/philmphdev",
 			"",
-			"Creationdate:\t$2",
+			".LINK",
+			"$1",
 			"#>",
 			"",
 			"$0"
@@ -99,8 +98,8 @@
 		"description": "Synopsis Block"
 	},
 
-	"PM Empty Synopsis": {
-		"prefix": "[PM] Empty Synopsis",
+	"PM Synopsis Empty": {
+		"prefix": "[PM] Synopsis Empty",
 		"body": [
 			"<#",
 			".SYNOPSIS",
@@ -130,10 +129,10 @@
 			".NOTES",
 			"Author:\t\t\t$1",
 			"Author Git:\t\t$2",
-			"Repository:\t\t$3",
-			"Company:\t\t$4",
+			"Company:\t\t$3",
 			"",
-			"Creationdate:\t$5",
+			".LINK",
+			"$4",
 			"#>",
 			"",
 			"$0"
@@ -141,24 +140,22 @@
 		"description": "Empty Synopsis Block"
 	},
 
-	"PM Synopsis File": {
-		"prefix": "[PM] Synopsis File",
+	"PM File Synopsis": {
+		"prefix": "[PM] File Synopsis",
 		"body": [
-			"${1:#Requires -Version ",
-			"#Requires -RunAsAdministrator",
-			"",
-			"}<#",
-			"############################################################",
+			"${3:#Requires -Version ${1}",
+			"}${2:#Requires -RunAsAdministrator",
+			"}",
+			"<#",
+			"#################################################################",
 			"Author:\t\t\t\tPhilipp Maier",
 			"Author Git:\t\t\thttps://github.com/philmph",
-			"Repository:\t\t\t$2",
-			"",
-			"Filename:\t\t\t$3",
-			"Creationdate:\t\t$4",
 			"",
 			"Notes & Usage:",
-			"$5",
-			"############################################################",
+			"$4${6:",
+			"",
+			"Link:\t\t\t\t$5}",
+			"#################################################################",
 			"#>",
 			"",
 			"$0"
@@ -166,25 +163,23 @@
 		"description": "Synopsis File Block"
 	},
 
-	"PM Empty Synopsis File": {
-		"prefix": "[PM] Empty Synopsis File",
+	"PM File Synopsis Empty": {
+		"prefix": "[PM] File Synopsis Empty",
 		"body": [
-			"${1:#Requires -Version ",
-			"#Requires -RunAsAdministrator",
-			"",
-			"}<#",
-			"############################################################",
-			"Author:\t\t\t\t$2",
-			"Author Git:\t\t\t$3",
-			"Repository:\t\t\t$4",
-			"Company:\t\t\t$5",
-			"",
-			"Filename:\t\t\t$6",
-			"Creationdate:\t\t$7",
+			"${3:#Requires -Version ${1}",
+			"}${2:#Requires -RunAsAdministrator",
+			"}",
+			"<#",
+			"#################################################################",
+			"Author:\t\t\t\t$4",
+			"Author Git:\t\t\t$5",
+			"Company:\t\t\t$6",
 			"",
 			"Notes & Usage:",
-			"$8",
-			"############################################################",
+			"$7${9:",
+			"",
+			"Link:\t\t\t\t$8}",
+			"#################################################################",
 			"#>",
 			"",
 			"$0"
@@ -247,7 +242,7 @@
 			"[PSCustomObject] @{",
 			"\t$1 = $2$0",
 			"}",
-			"",
+			""
 		],
 		"description": "PSCustomObject Block"
 	},
@@ -304,21 +299,29 @@
 	"PM ArrayList (deprecated)": {
 		"prefix": "[PM] ArrayList (deprecated)",
 		"body": [
-			"# Deprecated: Use Generic List",
+			"<# Deprecated: Use Generic List - https://docs.microsoft.com/en-us/dotnet/api/system.collections.arraylist?view=netcore-3.1",
+			"We don't recommend that you use the ArrayList class for new development.",
+			"Instead, we recommend that you use the generic List<T> class.",
+			"The ArrayList class is designed to hold heterogeneous collections of objects. #>",
 			"\\$${1:Name} = [System.Collections.ArrayList]::new()",
 			"$0"
 		],
 		"description": "ArrayList (deprecated)"
 	},
 
-	"PM ArrayList (pwsh 3.0; deprecated)": {
-		"prefix": "[PM] ArrayList (pwsh 3.0; deprecated)",
+	"PM ArrayList (deprecated; pwsh 3.0)": {
+		"prefix": "[PM] ArrayList (deprecated; pwsh 3.0)",
 		"body": [
-			"# Deprecated: Use Generic List",
+			"<#",
+			"Deprecated: Use Generic List - https://docs.microsoft.com/en-us/dotnet/api/system.collections.arraylist?view=netcore-3.1",
+			"'We don't recommend that you use the ArrayList class for new development.",
+			"Instead, we recommend that you use the generic List<T> class.",
+			"The ArrayList class is designed to hold heterogeneous collections of objects.'",
+			"#>",
 			"\\$${1:Name} = New-Object -TypeName 'System.Collections.ArrayList'",
 			"$0"
 		],
-		"description": "ArrayList (pwsh 3.0; deprecated)"
+		"description": "ArrayList (deprecated; pwsh 3.0)"
 	},
 
 	"PM try catch": {
