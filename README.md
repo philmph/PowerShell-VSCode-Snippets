@@ -8,16 +8,15 @@ Requires git in ```$env:PATH``` and user context installation of vs code. Execut
 
 ```powershell
 $TempPath = Join-Path -Path $env:TEMP -ChildPath "PWSH_VSCodeSnippets"
-$JSONPath = "C:\Users\$($env:USERNAME)\AppData\Roaming\Code\User\snippets"
-$JSONPathFile = Join-Path -Path $JSONPath -ChildPath "powershell.json"
+$JSONPath = Join-Path -Path "C:\Users\$($env:USERNAME)\AppData\Roaming\Code\User\snippets" -ChildPath "powershell.json"
 
-git clone git@github.com:philmphdev/PWSH_VSCodeSnippets.git $TempPath
+git clone git@github.com:philmph/PWSH_VSCodeSnippets.git $TempPath
 
-if (Test-Path -Path $JSONPathFile -PathType Leaf) {
-    Rename-Item -Path $JSONPathFile -NewName "powershell.json.old"
+if (Test-Path -Path $JSONPath -PathType Leaf) {
+    Rename-Item -Path $JSONPath -NewName "powershell.json.old"
 }
 
-Copy-Item -Path "$TempPath\powershell_template.json" -Destination $JSONPathFile -Force -Confirm
+Copy-Item -Path "$TempPath\powershell_template.json" -Destination $JSONPath -Force -Confirm
 
 Remove-Item -Path $TempPath -Force -Recurse
 ```
