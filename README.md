@@ -1,5 +1,7 @@
 # PWSH_VSCodeSnippets
 
+## About
+
 This repository is used by myself to maintain my VS Code snippets for powershell.
 
 ## Installation
@@ -13,7 +15,7 @@ $JSONPath = Join-Path -Path "C:\Users\$($env:USERNAME)\AppData\Roaming\Code\User
 git clone git@github.com:philmph/PWSH_VSCodeSnippets.git $TempPath
 
 if (Test-Path -Path $JSONPath -PathType Leaf) {
-    Rename-Item -Path $JSONPath -NewName "powershell.json.old"
+    Rename-Item -Path $JSONPath -NewName ("powershell.json.old-{0}" -f (Get-Date -Format "yyyyMMdd-HHmmss"))
 }
 
 Copy-Item -Path "$TempPath\powershell_template.json" -Destination $JSONPath -Force -Confirm
