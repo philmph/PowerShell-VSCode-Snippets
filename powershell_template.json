@@ -3,8 +3,7 @@
 		"prefix": "[PM] Function",
 		"body": [
 			"function ${1:Verb}${2:-}${3:Noun} {",
-				"\t[CmdletBinding(${6:SupportsShouldProcess}${5:",
-				"\t\t\t   ConfirmImpact='${4:String}'})]",
+				"\t[CmdletBinding(${4:SupportsShouldProcess})]",
 				"\t",
 				"\tparam (",
 				"\t\t$0",
@@ -45,15 +44,17 @@
 	"PM Parameter": {
 		"prefix": "[PM] Parameter",
 		"body": [
-			"[Parameter(${7:Mandatory}${6:,",
-			"\t\t   Position=${1:Int}}${5:,",
-			"\t\t   ValueFromPipeline}${4:,",
-			"\t\t   ValueFromPipelineByPropertyName}${3:,",
-			"\t\t   ParameterSetName='${2:String}'})]",
-			"${8:[Alias('String1', 'String2')]",
+			"[Parameter(",
+			"\tMandatory,",
+			"\tPosition=${2:Int},",
+			"\tValueFromPipeline,",
+			"\tValueFromPipelineByPropertyName,",
+			"\tParameterSetName='${1:String}'",
+			")]",
+			"[Alias('String')]",
 			"[ValidateNotNull()]",
 			"[ValidateNotNullOrEmpty()]",
-			"[ValidateSet('String1', 'String2')]",
+			"[ValidateSet('String')]",
 			"[ValidateCount(Int_min, Int_max)]",
 			"[ValidateLength(Int_min, Int_max)]",
 			"[ValidateRange(Int_min, Int_max)]",
@@ -62,7 +63,7 @@
 			"[AllowNull()]",
 			"[AllowEmptyString()]",
 			"[AllowEmptyCollection()]",
-			"}[${9:Type}${10:[]}]\\$${11:Name}$0"
+			"[${3:Type}${4:[]}]\\$${5:Name}$0"
 		],
 		"description": "Parameter Block"
 	},
@@ -70,10 +71,25 @@
 	"PM Parameter Short": {
 		"prefix": "[PM] Parameter Short",
 		"body": [
-			"[Parameter()]",
-			"[${1:Type}${2:[]}]\\$${3:Name}$0"
+			"[Parameter(",
+			"\tMandatory,",
+			"\tValueFromPipeline,",
+			"\tValueFromPipelineByPropertyName",
+			")]",
+			"[Alias('String')]",
+			"[ValidateNotNullOrEmpty()]",
+			"[ValidateSet('String')]",
+			"[${3:Type}${4:[]}]\\$${5:Name}$0"
 		],
 		"description": "Short Parameter Block"
+	},
+
+	"PM Parameter Empty": {
+		"prefix": "[PM] Parameter Empty",
+		"body": [
+			"[${1:Type}${2:[]}]\\$${3:Name}$0"
+		],
+		"description": "Empty Parameter Block"
 	},
 
 	"PM Synopsis": {
