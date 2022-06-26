@@ -1,12 +1,16 @@
 # PWSH_VSCodeSnippets
 
+**Note**: This project is not actively maintained by me due to moving away from PowerShell development.
+
+Feel free to use this code if you consider it useful.
+
 ## About
 
 This repository is used by myself to maintain my VS Code snippets for powershell.
 
 ## Installation
 
-Requires git in ```$env:PATH``` and user context installation of vs code. Execute commands in PowerShell:
+Requires git in `$env:PATH` and user context installation of vs code. Execute commands in PowerShell:
 
 ```powershell
 $TempPath = New-Item -Path $env:TEMP -Name 'PWSH_VSCodeSnippets' -ItemType Directory -Force
