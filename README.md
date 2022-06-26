@@ -1,4 +1,4 @@
-# PWSH_VSCodeSnippets
+# PowerShell VSCode Snippets
 
 **Note**: This project is not actively maintained by me due to moving away from PowerShell development.
 
